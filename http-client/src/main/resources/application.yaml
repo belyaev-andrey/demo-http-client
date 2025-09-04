@@ -1,3 +1,6 @@
+spring:
+  application:
+    name: Quotes Client
 server:
   port: 8081
   http2:

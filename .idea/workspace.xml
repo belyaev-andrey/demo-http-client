@@ -4,12 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3296cf7b-052b-4df4-aab7-014592c1d256" name="Changes" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/http-klient/pom.xml" afterDir="false" />
+    <list default="true" id="3296cf7b-052b-4df4-aab7-014592c1d256" name="Changes" comment="Added Kotlin client base project">
+      <change afterPath="$PROJECT_DIR$/http-klient/src/main/resources/application.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/http-client/src/main/java/com/jetbrains/test/boot4/client/QuoteClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/http-client/src/main/java/com/jetbrains/test/boot4/client/QuoteClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/http-client/src/main/resources/application.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/http-client/src/main/resources/application.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-klient/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/http-klient/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-klient/src/main/kotlin/com/jetbrains/test/boot4/klient/HttpKlientApplication.kt" beforeDir="false" afterPath="$PROJECT_DIR$/http-klient/src/main/kotlin/com/jetbrains/test/boot4/klient/HttpKlientApplication.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/HttpServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/HttpServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/QuoteController.java" beforeDir="false" afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/QuoteController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +59,7 @@
   &quot;isMigrated&quot;: true
 }</component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="Security Analysis" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
@@ -71,6 +74,8 @@
   "keyToString": {
     "HTTP Request.generated-requests | #3.executor": "Run",
     "HTTP Request.generated-requests | #4.executor": "Run",
+    "HTTP Request.generated-requests | #6.executor": "Run",
+    "JUnit.HttpKlientApplicationTests.executor": "Debug",
     "JUnit.QuoteControllerAddTest.addQuote_createsQuoteAndReturnsCreated.executor": "Run",
     "JUnit.QuoteControllerTest.executor": "Run",
     "Maven.Junie Maven test: com.jetbrains.test.boot4.server.quote.QuoteControllerAddTest.executor": "Run",
@@ -88,6 +93,7 @@
     "RunOnceActivity.git.unshallow": "true",
     "RunOnceActivity.restore.workspace.module": "true",
     "Spring Boot.HttpClientApplication.executor": "Debug",
+    "Spring Boot.HttpKlientApplication.executor": "Debug",
     "Spring Boot.HttpServerApplication.executor": "Debug",
     "git-widget-placeholder": "main",
     "go.import.settings.migrated": "true",
@@ -113,16 +119,19 @@
         <entry key="HttpClient.HttpRequestRunConfigurationType">
           <value>
             <map>
-              <entry key="generated-requests | #3" value="STOPPED" />
               <entry key="generated-requests | #4" value="STOPPED" />
+              <entry key="generated-requests | #6" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.HttpKlientApplicationTests">
+  <component name="RunManager" selected="Spring Boot.HttpKlientApplication">
     <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#4" index="4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#6" index="6" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="HttpKlientApplicationTests" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
@@ -156,21 +165,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="QuoteControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="http-server" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.jetbrains.test.boot4.server.quote.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="com.jetbrains.test.boot4.server.quote" />
-      <option name="MAIN_CLASS_NAME" value="com.jetbrains.test.boot4.server.quote.QuoteControllerTest" />
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="HttpClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
       <module name="http-client" />
       <option name="SPRING_BOOT_MAIN_CLASS" value="com.jetbrains.test.boot4.client.HttpClientApplication" />
@@ -193,11 +187,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.generated-requests | #6" />
         <item itemvalue="JUnit.HttpKlientApplicationTests" />
         <item itemvalue="Spring Boot.HttpClientApplication" />
         <item itemvalue="JUnit.QuoteControllerAddTest.addQuote_createsQuoteAndReturnsCreated" />
         <item itemvalue="HTTP Request.generated-requests | #4" />
-        <item itemvalue="JUnit.QuoteControllerTest" />
       </list>
     </recent_temporary>
   </component>
@@ -219,7 +213,7 @@
       <workItem from="1756902980417" duration="34000" />
       <workItem from="1756903204165" duration="111000" />
       <workItem from="1756917934454" duration="4673000" />
-      <workItem from="1756979899670" duration="6608000" />
+      <workItem from="1756979899670" duration="8600000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <option name="closed" value="true" />
@@ -229,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1756983139571</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Added Kotlin client base project">
+      <option name="closed" value="true" />
+      <created>1756993170557</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1756993170557</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,6 +239,7 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="Added Kotlin client base project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Kotlin client base project" />
   </component>
 </project>
