@@ -24,6 +24,7 @@
     <modules>
         <module>http-server</module>
         <module>http-client</module>
+        <module>http-klient</module>
         <module>http-sdk</module>
     </modules>
 
