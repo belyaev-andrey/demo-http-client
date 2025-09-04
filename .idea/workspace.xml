@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3296cf7b-052b-4df4-aab7-014592c1d256" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-client/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-client/src/main/java/com/jetbrains/test/boot4/client/HttpClientApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-client/src/main/java/com/jetbrains/test/boot4/client/HttpClientConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-client/src/main/java/com/jetbrains/test/boot4/client/QuoteClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-client/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-sdk/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-sdk/src/main/java/com/jetbrains/test/boot4/http/sdk/Quote.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/pom.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/HttpServerApplication.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/QuoteController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/QuoteEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/QuoteNotFoundException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/QuoteRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/QuoteService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/java/com/jetbrains/test/boot4/server/quote/package-info.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/resources/application.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/main/resources/db/migration/V1__init.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/http-server/src/test/java/com/jetbrains/test/boot4/server/quote/QuoteControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ChangesViewManager">
+    <option name="groupingKeys">
+      <option value="directory" />
+      <option value="repository" />
+    </option>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Spring Component" />
+        <option value="Spring Configuration" />
+        <option value="package-info" />
+        <option value="Exception" />
+        <option value="Spring Controller Advice" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HttpClientOnboardingState">{
+  &quot;isOnboardingCommentShown&quot;: true
+}</component>
+  <component name="KubernetesApiPersistence">{}</component>
+  <component name="KubernetesApiProvider">{
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="Security Analysis" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 5
+}</component>
+  <component name="ProjectId" id="32BmcbJUpfUBZNUou74JqCNSEXL" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "HTTP Request.generated-requests | #3.executor": "Run",
+    "HTTP Request.generated-requests | #4.executor": "Run",
+    "JUnit.QuoteControllerTest.executor": "Run",
+    "Maven.Junie Maven test: com.jetbrains.test.boot4.server.quote.QuoteControllerAddTest.executor": "Run",
+    "Maven.Junie Maven test: com.jetbrains.test.boot4.server.quote.QuoteControllerTest.executor": "Run",
+    "Maven.demo-http-client [install].executor": "Run",
+    "Maven.http-server [install].executor": "Run",
+    "Maven.http-server [verify].executor": "Run",
+    "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "RunOnceActivity.restore.workspace.module": "true",
+    "Spring Boot.HttpClientApplication.executor": "Debug",
+    "Spring Boot.HttpServerApplication.executor": "Debug",
+    "git-widget-placeholder": "main",
+    "go.import.settings.migrated": "true",
+    "junie.onboarding.icon.badge.shown": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/andrey.belyaev/IdeaProjects/Test/workspace-boot-4-features/demo-http-client",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Problems",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.18399264",
+    "settings.editor.selected.configurable": "settings.space",
+    "to.speed.mode.migration.done": "true",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RunDashboard">
+    <option name="configurationStatuses">
+      <map>
+        <entry key="HttpClient.HttpRequestRunConfigurationType">
+          <value>
+            <map>
+              <entry key="generated-requests | #3" value="STOPPED" />
+              <entry key="generated-requests | #4" value="STOPPED" />
+            </map>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="RunManager" selected="JUnit.QuoteControllerAddTest.addQuote_createsQuoteAndReturnsCreated">
+    <configuration name="generated-requests | #3" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#3" index="3" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="generated-requests | #4" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$APPLICATION_CONFIG_DIR$/scratches/generated-requests.http" executionIdentifier="#4" index="4" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="QuoteControllerAddTest.addQuote_createsQuoteAndReturnsCreated" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="http-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jetbrains.test.boot4.server.quote.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jetbrains.test.boot4.server.quote" />
+      <option name="MAIN_CLASS_NAME" value="com.jetbrains.test.boot4.server.quote.QuoteControllerAddTest" />
+      <option name="METHOD_NAME" value="addQuote_createsQuoteAndReturnsCreated" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="QuoteControllerTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="http-server" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jetbrains.test.boot4.server.quote.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.jetbrains.test.boot4.server.quote" />
+      <option name="MAIN_CLASS_NAME" value="com.jetbrains.test.boot4.server.quote.QuoteControllerTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HttpClientApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" temporary="true" nameIsGenerated="true">
+      <module name="http-client" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.jetbrains.test.boot4.client.HttpClientApplication" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.jetbrains.test.boot4.client.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.QuoteControllerAddTest.addQuote_createsQuoteAndReturnsCreated" />
+        <item itemvalue="HTTP Request.generated-requests | #4" />
+        <item itemvalue="Spring Boot.HttpClientApplication" />
+        <item itemvalue="JUnit.QuoteControllerTest" />
+        <item itemvalue="HTTP Request.generated-requests | #3" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-bf35d07a577b-intellij.indexing.shared.core-IU-252.25557.131" />
+        <option value="bundled-js-predefined-d6986cc7102b-b598e85cdad2-JavaScript-IU-252.25557.131" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3296cf7b-052b-4df4-aab7-014592c1d256" name="Changes" comment="" />
+      <created>1756902979322</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1756902979322</updated>
+      <workItem from="1756902980417" duration="34000" />
+      <workItem from="1756903204165" duration="111000" />
+      <workItem from="1756917934454" duration="4673000" />
+      <workItem from="1756979899670" duration="2961000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
