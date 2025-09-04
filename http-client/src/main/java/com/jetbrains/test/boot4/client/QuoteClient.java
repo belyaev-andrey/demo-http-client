@@ -8,6 +8,6 @@ import org.springframework.web.service.annotation.HttpExchange;
 interface QuoteClient {
 
     @GetExchange(url = "/quote")
-    Quote getQuote();
+    Quote fetchRandomQuote();
 
 }

@@ -1,0 +1,69 @@
+openapi: 3.1.0
+info:
+  title: HTTP Server API
+  description: OpenAPI specification for the Demo HTTP Server
+  contact:
+    name: Demo Team
+    email: demo@example.com
+  license:
+    name: Apache 2.0
+  version: v1
+servers:
+- url: http://localhost:8080
+  description: Generated server url
+tags:
+- name: Quotes
+  description: Operations related to quotes
+paths:
+  /api/quote:
+    get:
+      tags:
+      - Quotes
+      summary: Get random quote
+      description: Returns a random quote from the storage
+      operationId: getQuote
+      responses:
+        "200":
+          description: Random quote returned
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quote"
+        "404":
+          description: No quote found
+          content:
+            text/plain: {}
+    post:
+      tags:
+      - Quotes
+      summary: Add a new quote
+      description: Creates a new quote entry
+      operationId: addQuote
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/Quote"
+        required: true
+      responses:
+        "201":
+          description: Quote created
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Quote"
+        "400":
+          description: Invalid input
+          content:
+            text/plain: {}
+components:
+  schemas:
+    Quote:
+      type: object
+      properties:
+        quote:
+          type: string
+        author:
+          type: string
+        source:
+          type: string

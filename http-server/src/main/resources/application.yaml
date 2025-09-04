@@ -7,7 +7,15 @@ spring:
   flyway:
     enabled: true
     locations: classpath:db/migration
+  mvc:
+    log-resolved-exception: true
+    problemdetails:
+      enabled: true
 
 logging:
   level:
     org.flywaydb.core: info
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: trace
+    org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler: debug
+  pattern:
+    console: '%-5level %clr(%c{0}){cyan} : %m%n'
