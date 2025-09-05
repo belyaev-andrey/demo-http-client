@@ -7,6 +7,8 @@ import io.swagger.v3.oas.annotations.info.License;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.ApiVersionConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @SpringBootApplication
 class HttpServerApplication {
@@ -15,6 +17,15 @@ class HttpServerApplication {
         SpringApplication.run(HttpServerApplication.class, args);
     }
 
+}
+
+@Configuration
+class ApiVersioningConfiguration implements WebMvcConfigurer {
+
+    @Override
+    public void configureApiVersioning(ApiVersionConfigurer configurer) {
+        configurer.useRequestHeader("X-API-Version").setVersionRequired(false);
+    }
 }
 
 @OpenAPIDefinition(

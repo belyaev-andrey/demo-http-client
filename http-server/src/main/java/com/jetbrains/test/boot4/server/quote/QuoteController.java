@@ -2,6 +2,7 @@ package com.jetbrains.test.boot4.server.quote;
 
 import com.jetbrains.test.boot4.http.sdk.Quote;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -9,6 +10,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/api")
@@ -30,6 +33,17 @@ class QuoteController {
         Quote result = quoteService.getRandomQuote();
         return ResponseEntity.ok(result);
     }
+
+    @GetMapping(path = "/quote", produces = "application/json", version = "2.0")
+    @Operation(summary = "Get a list of random quotes", description = "Returns a list of random quotes from the storage")
+    @ApiResponse(responseCode = "200", description = "List of random quotes returned",
+            content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Quote.class))))
+    @ApiResponse(responseCode = "404", description = "No quotes found", content = @Content(mediaType = "text/plain"))
+    ResponseEntity<List<Quote>> getQuotes() {
+        List<Quote> result = List.of(quoteService.getRandomQuote(), quoteService.getRandomQuote());
+        return ResponseEntity.ok(result);
+    }
+
 
     @PostMapping(path = "/quote", consumes = "application/json", produces = "application/json")
     @Operation(summary = "Add a new quote", description = "Creates a new quote entry")
