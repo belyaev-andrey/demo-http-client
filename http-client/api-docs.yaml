@@ -7,6 +7,7 @@ info:
     email: demo@example.com
   license:
     name: Apache 2.0
+    identifier: Apache 2.0
   version: v1
 servers:
 - url: http://localhost:8080
