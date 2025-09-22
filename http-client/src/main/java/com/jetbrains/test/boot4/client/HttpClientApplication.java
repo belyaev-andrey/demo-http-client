@@ -17,6 +17,7 @@ import org.springframework.web.service.registry.ImportHttpServices;
 import java.util.List;
 
 @SpringBootApplication
+@ImportHttpServices(QuoteClient.class)
 class HttpClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(HttpClientApplication.class, args);
