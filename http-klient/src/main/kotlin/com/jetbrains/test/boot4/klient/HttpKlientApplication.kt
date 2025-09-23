@@ -45,15 +45,3 @@ class QuoteController(private val klient: QuoteKlient) {
     fun fetchRandomQuotes() = klient.fetchRandomQuotes()
 
 }
-
-@Configuration(proxyBeanMethods = false)
-class HttpClientsConfiguration {
-    @Bean
-    fun groupConfigurer(): RestClientHttpServiceGroupConfigurer {
-        return RestClientHttpServiceGroupConfigurer() { groups ->
-            groups.forEachClient { group, builder ->
-                builder.apiVersionInserter(ApiVersionInserter.useHeader("X-API-Version"))
-            }
-        }
-    }
-}
