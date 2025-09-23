@@ -22,13 +22,6 @@ class HttpClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(HttpClientApplication.class, args);
     }
-
-    @Bean
-    public RestClientHttpServiceGroupConfigurer groupConfigurer() {
-        return groups -> groups.forEachClient((group, builder) ->
-                builder.apiVersionInserter(ApiVersionInserter.useHeader("X-API-Version"))
-        );
-    }
 }
 
 @HttpExchange(url = "http://localhost:8080/api", accept = "application/json")
@@ -51,6 +44,7 @@ class QuoteController {
     QuoteController(QuoteClient client) {
         this.client = client;
     }
+
     @GetMapping("quote")
     public ResponseEntity<Quote> getQuote() {
         return ResponseEntity.ok(client.fetchRandomQuote());
