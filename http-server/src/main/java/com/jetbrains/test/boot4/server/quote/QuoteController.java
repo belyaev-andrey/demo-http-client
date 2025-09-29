@@ -24,7 +24,7 @@ class QuoteController {
         this.quoteService = quoteService;
     }
 
-    @GetMapping(path = "/quote", produces = "application/json")
+    @GetMapping(path = "/quote", produces = "application/json", version = "1.0+")
     @Operation(summary = "Get random quote", description = "Returns a random quote from the storage")
     @ApiResponse(responseCode = "200", description = "Random quote returned",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = Quote.class)))
@@ -45,7 +45,7 @@ class QuoteController {
     }
 
 
-    @PostMapping(path = "/quote", consumes = "application/json", produces = "application/json")
+    @PostMapping(path = "/quote", consumes = "application/json", produces = "application/json", version = "1.0+")
     @Operation(summary = "Add a new quote", description = "Creates a new quote entry")
     @ApiResponse(responseCode = "201", description = "Quote created")
     @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "text/plain"))
