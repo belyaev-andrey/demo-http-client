@@ -4,7 +4,7 @@ spring:
       service:
         apiversion:
           insert:
-            header: X-API-Version
+            header: API-Version
   application:
     name: Quotes Client
 server:

@@ -19,15 +19,6 @@ class HttpServerApplication {
 
 }
 
-@Configuration
-class ApiVersioningConfiguration implements WebMvcConfigurer {
-
-    @Override
-    public void configureApiVersioning(ApiVersionConfigurer configurer) {
-        configurer.useRequestHeader("X-API-Version").setVersionRequired(false);
-    }
-}
-
 @OpenAPIDefinition(
         info = @Info(
                 title = "HTTP Server API",

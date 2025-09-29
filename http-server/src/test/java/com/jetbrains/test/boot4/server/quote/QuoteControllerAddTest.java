@@ -3,8 +3,8 @@ package com.jetbrains.test.boot4.server.quote;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,6 +38,7 @@ class QuoteControllerAddTest {
         // Act & Assert
         mockMvc.perform(post("/api/quote")
                         .contentType(MediaType.APPLICATION_JSON)
+                        .header("API-Version", "1.0")
                         .content(jsonBody)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())

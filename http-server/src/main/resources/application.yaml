@@ -11,7 +11,10 @@ spring:
     log-resolved-exception: true
     problemdetails:
       enabled: true
-
+    apiversion:
+      use:
+        header: API-Version
+      required: false
 logging:
   level:
     org.flywaydb.core: info
