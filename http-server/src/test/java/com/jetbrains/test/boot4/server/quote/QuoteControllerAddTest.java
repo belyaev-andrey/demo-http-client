@@ -4,10 +4,14 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.webmvc.test.autoconfigure.AutoConfigureMockMvc;
+import org.springframework.boot.webmvc.test.autoconfigure.MockMvcBuilderCustomizer;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.setup.ConfigurableMockMvcBuilder;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.ApiVersionInserter;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
@@ -38,7 +42,8 @@ class QuoteControllerAddTest {
         // Act & Assert
         mockMvc.perform(post("/api/quote")
                         .contentType(MediaType.APPLICATION_JSON)
-                        .header("API-Version", "1.0")
+                        .apiVersion(2.0)
+//                        .header("API-Version", "1.0")
                         .content(jsonBody)
                         .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isCreated())
@@ -48,4 +53,13 @@ class QuoteControllerAddTest {
         long after = quoteRepository.count();
         org.assertj.core.api.Assertions.assertThat(after).isEqualTo(before + 1);
     }
+
+//    TODO: uncomment to make 'apiVersion' working properly
+//    @TestConfiguration
+//    static class QuoteControllerAddTestConfig implements MockMvcBuilderCustomizer {
+//        @Override
+//        public void customize(ConfigurableMockMvcBuilder<?> builder) {
+//            builder.apiVersionInserter(ApiVersionInserter.useHeader("API-Version"));
+//        }
+//    }
 }
