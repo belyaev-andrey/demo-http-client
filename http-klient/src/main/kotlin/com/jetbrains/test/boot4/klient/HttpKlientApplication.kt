@@ -23,7 +23,7 @@ fun main(args: Array<String>) {
 @HttpExchange(url = "http://localhost:8080/api/")
 interface QuoteKlient {
 
-    @GetExchange("quote")
+    @GetExchange("quote", version = "1.0")
     fun fetchRandomQuote(): Quote
 
     @GetExchange("quote", version = "2.0")

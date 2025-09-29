@@ -1,21 +1,37 @@
 package com.jetbrains.test.boot4.server.quote;
 
 import com.jetbrains.test.boot4.http.sdk.Quote;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
 class QuoteService {
+    private static final Logger log = LoggerFactory.getLogger(QuoteService.class);
     private final QuoteRepository repository;
+    private final QuoteProviderDb quoteProviderDb;
+    private final QuoteProviderFallback quoteProviderFallback;
 
-    QuoteService(QuoteRepository repository) {
+    QuoteService(QuoteRepository repository, QuoteProviderDb quoteProviderDb, QuoteProviderFallback quoteProviderFallback) {
         this.repository = repository;
+        this.quoteProviderDb = quoteProviderDb;
+        this.quoteProviderFallback = quoteProviderFallback;
     }
 
     @Transactional(readOnly = true)
     Quote getRandomQuote() {
-        QuoteEntity e = repository.findRandom().orElseThrow(() -> new QuoteNotFoundException("No quotes found"));
-        return new Quote(e.getText(), e.getAuthor(), e.getSource());
+        QuoteEntity entity;
+        try {
+            entity = quoteProviderDb.findQuote();
+            if (entity.getSource().isBlank()) {
+                throw new IllegalStateException("A quote is not trusted");
+            }
+        } catch (Exception e) {
+            log.error("Error fetching quote from DB", e);
+            entity = quoteProviderFallback.findQuote();
+        }
+        return new Quote(entity.getText(), entity.getAuthor(), entity.getSource());
     }
 
     @Transactional
