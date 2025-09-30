@@ -9,6 +9,6 @@ import java.util.Optional;
 @Repository
 interface QuoteRepository extends CrudRepository<QuoteEntity, Long> {
 
-    @Query("SELECT * FROM quote ORDER BY RAND() LIMIT 1")
+    @Query("SELECT * FROM quote ORDER BY RANDOM() LIMIT 1")
     Optional<QuoteEntity> findRandom();
 }
