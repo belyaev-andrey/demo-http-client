@@ -23,6 +23,15 @@ class QuoteControllerTest {
     private MockMvc mockMvc;
 
     @MockitoBean
+    private QuoteRepository quoteRepository;
+
+    @MockitoBean
+    private QuoteProviderDb quoteProviderDb;
+
+    @MockitoBean
+    private QuoteProviderFallback quoteProviderFallback;
+
+    @MockitoBean
     private QuoteService quoteService;
 
     @Test
