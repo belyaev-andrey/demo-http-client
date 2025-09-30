@@ -7,7 +7,7 @@ import org.springframework.context.annotation.Import;
 
 @SpringBootApplication
 @Import(QuoteProviderRegistrar.class)
-class HttpServerApplication {
+public class HttpServerApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(HttpServerApplication.class, args);
