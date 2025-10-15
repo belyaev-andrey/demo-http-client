@@ -3,6 +3,7 @@ package com.jetbrains.test.boot4.server.quote;
 import com.jetbrains.test.boot4.http.sdk.Quote;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,10 +11,12 @@ import org.springframework.transaction.annotation.Transactional;
 class QuoteService {
     private static final Logger log = LoggerFactory.getLogger(QuoteService.class);
     private final QuoteRepository repository;
-    private final QuoteProviderDb quoteProviderDb;
-    private final QuoteProviderFallback quoteProviderFallback;
+    private final QuoteProvider quoteProviderDb;
+    private final QuoteProvider quoteProviderFallback;
 
-    QuoteService(QuoteRepository repository, QuoteProviderDb quoteProviderDb, QuoteProviderFallback quoteProviderFallback) {
+    QuoteService(QuoteRepository repository,
+                 @Qualifier("quoteProviderDb") QuoteProvider quoteProviderDb,
+                 @Qualifier("quoteProviderFallback") QuoteProvider quoteProviderFallback) {
         this.repository = repository;
         this.quoteProviderDb = quoteProviderDb;
         this.quoteProviderFallback = quoteProviderFallback;
