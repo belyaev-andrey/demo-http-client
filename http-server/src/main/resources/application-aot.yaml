@@ -1,3 +1,6 @@
 spring:
   application:
     name: Quotes Server (AOT Enabled)
+  docker:
+    compose:
+      enabled: false
