@@ -1,13 +1,19 @@
 spring:
-  http:
-    client:
-      service:
-        apiversion:
-          insert:
-            header: API-Version
   application:
     name: Quotes Client
+  http:
+    serviceclient:
+      default:
+        apiversion:
+          default: 1.0.0
+        insert:
+          header: API-Version
 server:
   port: 8081
   http2:
     enabled: true
+
+logging:
+  level:
+    org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: trace
+    org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler: debug
