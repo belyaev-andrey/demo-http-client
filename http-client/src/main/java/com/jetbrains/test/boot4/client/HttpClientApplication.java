@@ -13,19 +13,20 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
+import org.springframework.web.service.registry.HttpServiceGroup;
 import org.springframework.web.service.registry.ImportHttpServices;
 
 import java.util.List;
 
 @SpringBootApplication
-@ImportHttpServices(QuoteClient.class)
+@ImportHttpServices(types = QuoteClient.class, clientType = HttpServiceGroup.ClientType.REST_CLIENT)
 class HttpClientApplication {
     public static void main(String[] args) {
         SpringApplication.run(HttpClientApplication.class, args);
     }
 }
 
-@HttpExchange(url = "http://localhost:8080/api", accept = "application/json")
+@HttpExchange(url = "http://localhost:8080/api")
 interface QuoteClient {
 
     @GetExchange(url = "/quote", version = "1.0")
@@ -37,7 +38,7 @@ interface QuoteClient {
 }
 
 @RestController
-@RequestMapping(value = "/api", consumes = "application/json", produces = "application/json")
+@RequestMapping(value = "/api/java", consumes = "application/json", produces = "application/json")
 class QuoteController {
 
     private final QuoteClient client;

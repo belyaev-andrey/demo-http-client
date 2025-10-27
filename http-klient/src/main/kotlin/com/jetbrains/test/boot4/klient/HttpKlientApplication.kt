@@ -3,6 +3,7 @@ package com.jetbrains.test.boot4.klient
 import com.jetbrains.test.boot4.http.sdk.Quote
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
@@ -32,12 +33,12 @@ interface QuoteKlient {
 }
 
 @RestController
-@RequestMapping("/api")
+@RequestMapping("/api/kotlin", consumes = ["application/json"], produces = ["application/json"])
 class QuoteController(private val klient: QuoteKlient) {
-    @GetMapping("quote", produces = ["application/json"])
-    fun fetchRandomQuote() = klient.fetchRandomQuote()
+    @GetMapping("quote")
+    fun fetchRandomQuote(): ResponseEntity<Quote> = ResponseEntity.ok(klient.fetchRandomQuote())
 
-    @GetMapping("quotes", produces = ["application/json"])
-    fun fetchRandomQuotes() = klient.fetchRandomQuotes()
+    @GetMapping("quotes")
+    fun fetchRandomQuotes(): ResponseEntity<List<Quote>> = ResponseEntity.ok(klient.fetchRandomQuotes())
 
 }
