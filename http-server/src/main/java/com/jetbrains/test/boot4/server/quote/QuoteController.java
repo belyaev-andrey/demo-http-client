@@ -55,11 +55,3 @@ class QuoteController {
     }
 }
 
-@ControllerAdvice
-class ErrorControllerAdvice {
-
-    @ExceptionHandler(QuoteNotFoundException.class)
-    public ResponseEntity<String> handleQuoteNotFoundException(QuoteNotFoundException ex) {
-        return new ResponseEntity<>(ex.getMessage(), HttpStatus.NOT_FOUND);
-    }
-}
