@@ -10,6 +10,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.ApiVersionInserter;
 import org.springframework.web.client.RestClient;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;
@@ -56,4 +57,15 @@ class QuoteController {
         return ResponseEntity.ok(client.fetchRandomQuotes());
     }
 
+}
+
+/**
+ * Programmatic configuration. Properties can be used as an alternative.
+ */
+@Configuration
+class ApiVersioningInserterForQuote implements RestClientCustomizer {
+    @Override
+    public void customize(RestClient.Builder restClientBuilder) {
+        restClientBuilder.apiVersionInserter(ApiVersionInserter.useHeader("API-Version"));
+    }
 }
