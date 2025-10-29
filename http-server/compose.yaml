@@ -15,6 +15,7 @@ services:
       - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/quotes
       - SPRING_DATASOURCE_USERNAME=quotes
       - SPRING_DATASOURCE_PASSWORD=quotes
+      - SPRING_PROFILES_ACTIVE=aot
       - JAVA_OPTS=-Dspring.aot.enabled=true
       - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
     ports:
