@@ -86,12 +86,11 @@
 <!--                     Run `docker compose up -d postgresql` before the build and shutdown it after-->
                     <image>
                         <name>jb/http-server:latest</name>
-                        <builder>bellsoft/buildpacks.builder:musl</builder>
+<!--                        <builder>bellsoft/buildpacks.builder:musl</builder>-->
 <!--                        <network>http-server_default</network>-->
                         <env>
                             <BP_SPRING_AOT_ENABLED>true</BP_SPRING_AOT_ENABLED>
 <!--                            <BP_JVM_CDS_ENABLED>true</BP_JVM_CDS_ENABLED>-->
-<!--                            <SPRING_PROFILES_ACTIVE>aot,localdb</SPRING_PROFILES_ACTIVE>-->
 <!--                            <SPRING_DATASOURCE_URL>jdbc:postgresql://postgresql:5432/quotes</SPRING_DATASOURCE_URL>-->
 <!--                            <SPRING_DATASOURCE_USERNAME>quotes</SPRING_DATASOURCE_USERNAME>-->
 <!--                            <SPRING_DATASOURCE_PASSWORD>quotes</SPRING_DATASOURCE_PASSWORD>-->
