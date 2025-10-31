@@ -86,6 +86,7 @@
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
                     <image>
+                        <builder>bellsoft/buildpacks.builder:musl</builder>
                         <name>jb/http-server:latest</name>
                     </image>
                 </configuration>
