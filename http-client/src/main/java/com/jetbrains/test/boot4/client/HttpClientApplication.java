@@ -26,7 +26,7 @@ class HttpClientApplication {
     }
 }
 
-@HttpExchange(url = "http://localhost:8080/api")
+@HttpExchange
 interface QuoteClient {
 
     @GetExchange(url = "/quote", version = "1.0")
@@ -65,6 +65,9 @@ class QuoteController {
 class ApiVersioningInserterForQuote implements RestClientCustomizer {
     @Override
     public void customize(RestClient.Builder restClientBuilder) {
-        restClientBuilder.apiVersionInserter(ApiVersionInserter.useHeader("API-Version"));
+        restClientBuilder.baseUrl("http://localhost:8080/api");
+        restClientBuilder.apiVersionInserter(
+                ApiVersionInserter.useHeader("API-Version")
+        );
     }
 }

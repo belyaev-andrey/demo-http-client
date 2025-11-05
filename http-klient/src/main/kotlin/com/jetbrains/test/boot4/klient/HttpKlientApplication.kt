@@ -3,6 +3,7 @@ package com.jetbrains.test.boot4.klient
 import com.jetbrains.test.boot4.http.sdk.Quote
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
+import org.springframework.http.MediaType
 import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
@@ -21,7 +22,7 @@ fun main(args: Array<String>) {
     runApplication<HttpKlientApplication>(*args)
 }
 
-@HttpExchange(url = "http://localhost:8080/api/")
+@HttpExchange
 interface QuoteKlient {
 
     @GetExchange("quote", version = "1.0")
@@ -33,7 +34,7 @@ interface QuoteKlient {
 }
 
 @RestController
-@RequestMapping("/api/kotlin", consumes = ["application/json"], produces = ["application/json"])
+@RequestMapping("/api/kotlin", produces = [MediaType.APPLICATION_JSON_VALUE])
 class QuoteController(private val klient: QuoteKlient) {
     @GetMapping("quote")
     fun fetchRandomQuote(): ResponseEntity<Quote> = ResponseEntity.ok(klient.fetchRandomQuote())
