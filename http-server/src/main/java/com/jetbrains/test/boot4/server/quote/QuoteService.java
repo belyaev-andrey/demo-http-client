@@ -1,6 +1,6 @@
 package com.jetbrains.test.boot4.server.quote;
 
-import com.jetbrains.test.boot4.http.sdk.Quote;
+import com.jetbrains.test.boot4.http.sdk.QuoteDto;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -23,8 +23,8 @@ class QuoteService {
     }
 
     @Transactional(readOnly = true)
-    Quote getRandomQuote() {
-        QuoteEntity entity;
+    QuoteDto getRandomQuote() {
+        Quote entity;
         try {
             entity = quoteProviderDb.findQuote();
             if (entity.getSource().isBlank()) {
@@ -34,12 +34,12 @@ class QuoteService {
             log.error("Error fetching quote from DB", e);
             entity = quoteProviderFallback.findQuote();
         }
-        return new Quote(entity.getText(), entity.getAuthor(), entity.getSource());
+        return new QuoteDto(entity.getText(), entity.getAuthor(), entity.getSource());
     }
 
     @Transactional
-    Quote addQuote(Quote quote) {
-        QuoteEntity saved = repository.save(new QuoteEntity(null, quote.quote(), quote.author(), quote.source()));
-        return new Quote(saved.getText(), saved.getAuthor(), saved.getSource());
+    QuoteDto addQuote(QuoteDto quote) {
+        Quote saved = repository.save(new Quote(null, quote.quote(), quote.author(), quote.source()));
+        return new QuoteDto(saved.getText(), saved.getAuthor(), saved.getSource());
     }
 }

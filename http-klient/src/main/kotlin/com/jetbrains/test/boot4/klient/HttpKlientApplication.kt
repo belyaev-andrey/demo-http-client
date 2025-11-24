@@ -1,6 +1,6 @@
 package com.jetbrains.test.boot4.klient
 
-import com.jetbrains.test.boot4.http.sdk.Quote
+import com.jetbrains.test.boot4.http.sdk.QuoteDto
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 import org.springframework.http.MediaType
@@ -26,10 +26,10 @@ fun main(args: Array<String>) {
 interface QuoteKlient {
 
     @GetExchange("quote", version = "1.0")
-    fun fetchRandomQuote(): Quote
+    fun fetchRandomQuote(): QuoteDto
 
     @GetExchange("quote", version = "2.0")
-    fun fetchRandomQuotes(): List<Quote>
+    fun fetchRandomQuotes(): List<QuoteDto>
 
 }
 
@@ -37,9 +37,9 @@ interface QuoteKlient {
 @RequestMapping("/api/kotlin", produces = [MediaType.APPLICATION_JSON_VALUE])
 class QuoteController(private val klient: QuoteKlient) {
     @GetMapping("quote")
-    fun fetchRandomQuote(): ResponseEntity<Quote> = ResponseEntity.ok(klient.fetchRandomQuote())
+    fun fetchRandomQuote(): ResponseEntity<QuoteDto> = ResponseEntity.ok(klient.fetchRandomQuote())
 
     @GetMapping("quotes")
-    fun fetchRandomQuotes(): ResponseEntity<List<Quote>> = ResponseEntity.ok(klient.fetchRandomQuotes())
+    fun fetchRandomQuotes(): ResponseEntity<List<QuoteDto>> = ResponseEntity.ok(klient.fetchRandomQuotes())
 
 }

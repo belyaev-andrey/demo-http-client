@@ -6,7 +6,7 @@ import org.springframework.data.annotation.PersistenceCreator;
 import org.springframework.data.relational.core.mapping.Table;
 
 @Table("quote")
-public class QuoteEntity {
+public class Quote {
     @Id
     @Nullable
     private Long id;
@@ -15,14 +15,14 @@ public class QuoteEntity {
     private String source;
 
     @PersistenceCreator
-    public QuoteEntity(@Nullable Long id, String text, String author, String source) {
+    public Quote(@Nullable Long id, String text, String author, String source) {
         this.id = id;
         this.text = text;
         this.author = author;
         this.source = source;
     }
 
-    public QuoteEntity(String text, String author, String source) {
+    public Quote(String text, String author, String source) {
         this(null, text, author, source);
     }
 

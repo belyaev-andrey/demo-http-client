@@ -9,7 +9,8 @@ class QuoteProviderDb implements QuoteProvider {
     }
 
     @Override
-    public QuoteEntity findQuote() {
+    public Quote findQuote() {
+        quoteRepository.findAllByAuthor("John Doe").forEach(System.out::println);
         return quoteRepository.findRandom().orElseThrow(() -> new QuoteNotFoundException("No quotes found"));
     }
 }

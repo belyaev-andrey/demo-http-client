@@ -1,6 +1,6 @@
 package com.jetbrains.test.boot4.server.quote;
 
-import com.jetbrains.test.boot4.http.sdk.Quote;
+import com.jetbrains.test.boot4.http.sdk.QuoteDto;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.ArraySchema;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,20 +27,20 @@ class QuoteController {
     @GetMapping(path = "/quote", produces = "application/json", version = "1.0+")
     @Operation(summary = "Get random quote", description = "Returns a random quote from the storage")
     @ApiResponse(responseCode = "200", description = "Random quote returned",
-            content = @Content(mediaType = "application/json", schema = @Schema(implementation = Quote.class)))
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = QuoteDto.class)))
     @ApiResponse(responseCode = "404", description = "No quote found", content = @Content(mediaType = "text/plain"))
-    ResponseEntity<Quote> getQuote() {
-        Quote result = quoteService.getRandomQuote();
+    ResponseEntity<QuoteDto> getQuote() {
+        QuoteDto result = quoteService.getRandomQuote();
         return ResponseEntity.ok(result);
     }
 
     @GetMapping(path = "/quote", produces = "application/json", version = "2.0")
     @Operation(summary = "Get a list of random quotes", description = "Returns a list of random quotes from the storage")
     @ApiResponse(responseCode = "200", description = "List of random quotes returned",
-            content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = Quote.class))))
+            content = @Content(mediaType = "application/json", array = @ArraySchema(schema = @Schema(implementation = QuoteDto.class))))
     @ApiResponse(responseCode = "404", description = "No quotes found", content = @Content(mediaType = "text/plain"))
-    ResponseEntity<List<Quote>> getQuotes() {
-        List<Quote> result = List.of(quoteService.getRandomQuote(), quoteService.getRandomQuote());
+    ResponseEntity<List<QuoteDto>> getQuotes() {
+        List<QuoteDto> result = List.of(quoteService.getRandomQuote(), quoteService.getRandomQuote());
         return ResponseEntity.ok(result);
     }
 
@@ -49,7 +49,7 @@ class QuoteController {
     @Operation(summary = "Add a new quote", description = "Creates a new quote entry")
     @ApiResponse(responseCode = "201", description = "Quote created")
     @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "text/plain"))
-    ResponseEntity<Quote> addQuote(@RequestBody Quote quote) {
+    ResponseEntity<QuoteDto> addQuote(@RequestBody QuoteDto quote) {
         quoteService.addQuote(quote);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

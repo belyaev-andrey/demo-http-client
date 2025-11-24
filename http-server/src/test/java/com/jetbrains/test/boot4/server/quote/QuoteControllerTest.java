@@ -1,6 +1,6 @@
 package com.jetbrains.test.boot4.server.quote;
 
-import com.jetbrains.test.boot4.http.sdk.Quote;
+import com.jetbrains.test.boot4.http.sdk.QuoteDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -40,7 +40,7 @@ class QuoteControllerTest {
     @DisplayName("GET /api/quote returns a random quote as JSON and calls service once")
     void getQuote_returnsJsonFromService() throws Exception {
         // Arrange
-        Quote quote = new Quote(
+        QuoteDto quote = new QuoteDto(
                 "Stay hungry, stay foolish.",
                 "Steve Jobs",
                 "Stanford Commencement 2005"

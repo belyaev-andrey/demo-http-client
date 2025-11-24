@@ -1,6 +1,6 @@
 package com.jetbrains.test.boot4.client;
 
-import com.jetbrains.test.boot4.http.sdk.Quote;
+import com.jetbrains.test.boot4.http.sdk.QuoteDto;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.restclient.RestClientCustomizer;
@@ -30,10 +30,10 @@ class HttpClientApplication {
 interface QuoteClient {
 
     @GetExchange(url = "/quote", version = "1.0")
-    Quote fetchRandomQuote();
+    QuoteDto fetchRandomQuote();
 
     @GetExchange(url = "/quote", version = "2.0")
-    List<Quote> fetchRandomQuotes();
+    List<QuoteDto> fetchRandomQuotes();
 
 }
 
@@ -48,11 +48,11 @@ class QuoteController {
     }
 
     @GetMapping(value = "quote")
-    public ResponseEntity<Quote> getQuote() {
+    public ResponseEntity<QuoteDto> getQuote() {
         return ResponseEntity.ok(client.fetchRandomQuote());
     }
     @GetMapping(value = "quotes")
-    public ResponseEntity<List<Quote>> getQuotes() {
+    public ResponseEntity<List<QuoteDto>> getQuotes() {
         return ResponseEntity.ok(client.fetchRandomQuotes());
     }
 
