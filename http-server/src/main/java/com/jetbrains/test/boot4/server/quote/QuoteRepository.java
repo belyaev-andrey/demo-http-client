@@ -12,6 +12,4 @@ interface QuoteRepository extends CrudRepository<Quote, Long> {
 
     @Query("SELECT * FROM quote ORDER BY RANDOM() LIMIT 1")
     Optional<Quote> findRandom();
-
-    List<Quote> findAllByAuthor(String author);
 }
