@@ -7,6 +7,9 @@ import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 class QuoteService {
     private static final Logger log = LoggerFactory.getLogger(QuoteService.class);
@@ -24,22 +27,42 @@ class QuoteService {
 
     @Transactional(readOnly = true)
     QuoteDto getRandomQuote() {
-        Quote entity;
-        try {
-            entity = quoteProviderDb.findQuote();
-            if (entity.getSource().isBlank()) {
-                throw new IllegalStateException("A quote is not trusted");
-            }
-        } catch (Exception e) {
-            log.error("Error fetching quote from DB", e);
-            entity = quoteProviderFallback.findQuote();
-        }
+        Quote entity = fetchQuote()
+                .filter(q -> !q.getSource().isBlank())
+                .orElseGet(() -> {
+                    log.error("Error fetching quote from DB");
+                    return quoteProviderFallback.findQuote().orElseThrow(() -> new IllegalStateException("No quotes found in fallback provider"));
+                });
         return new QuoteDto(entity.getText(), entity.getAuthor(), entity.getSource());
     }
 
+    private Optional<Quote> fetchQuote() {
+        try {
+            return quoteProviderDb.findQuote();
+        } catch (Exception e) {
+            log.error("Exception during quote fetch from a DB", e);
+            return Optional.empty();
+        }
+
+    }
+
     @Transactional
-    QuoteDto addQuote(QuoteDto quote) {
-        Quote saved = repository.save(new Quote(null, quote.quote(), quote.author(), quote.source()));
-        return new QuoteDto(saved.getText(), saved.getAuthor(), saved.getSource());
+    Quote addQuote(QuoteDto quote) {
+        return repository.save(new Quote(null, quote.quote(), quote.author(), quote.source()));
+    }
+
+    public List<QuoteDto> getAllQuotes() {
+        return fetchQuotes().stream()
+                .map(quote -> new QuoteDto(quote.getText(), quote.getAuthor(), quote.getSource()))
+                .toList();
+    }
+
+    private List<Quote> fetchQuotes() {
+        try {
+            return quoteProviderDb.findAllQuotes();
+        } catch (Exception e) {
+            log.error("Exception during quotes fetch from a DB", e);
+            return quoteProviderFallback.findAllQuotes();
+        }
     }
 }

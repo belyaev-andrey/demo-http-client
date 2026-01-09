@@ -23,5 +23,8 @@ logging:
     org.flywaydb.core: info
     org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping: trace
     org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler: debug
+    org.springframework.security: TRACE
+    org.springframework.security.web.FilterChainProxy: DEBUG
+    org.springframework.security.web.access.intercept.RequestAuthorizationManager: DEBUG
   pattern:
     console: '%-5level %clr(%c{0}){cyan} : %m%n'

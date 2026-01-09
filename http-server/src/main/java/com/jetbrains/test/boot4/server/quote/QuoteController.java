@@ -44,14 +44,27 @@ class QuoteController {
         return ResponseEntity.ok(result);
     }
 
+    @GetMapping(path = "/all", produces = "application/json")
+    @Operation(summary = "Get random quote", description = "Returns all quotes from the storage")
+    @ApiResponse(responseCode = "200", description = "All quotes returned",
+            content = @Content(mediaType = "application/json", schema = @Schema(implementation = QuoteDto.class)))
+    @ApiResponse(responseCode = "404", description = "No quotes found", content = @Content(mediaType = "text/plain"))
+    ResponseEntity<List<QuoteDto>> getAllQuotes() {
+        List<QuoteDto> result = quoteService.getAllQuotes();
+        return result.isEmpty() ? ResponseEntity.notFound().build() : ResponseEntity.ok(result);
+    }
 
     @PostMapping(path = "/quote", consumes = "application/json", produces = "application/json", version = "1.0+")
     @Operation(summary = "Add a new quote", description = "Creates a new quote entry")
     @ApiResponse(responseCode = "201", description = "Quote created")
     @ApiResponse(responseCode = "400", description = "Invalid input", content = @Content(mediaType = "text/plain"))
-    ResponseEntity<QuoteDto> addQuote(@RequestBody QuoteDto quote) {
-        quoteService.addQuote(quote);
-        return ResponseEntity.status(HttpStatus.CREATED).build();
+    ResponseEntity<IdDto> addQuote(@RequestBody QuoteDto quote) {
+        Quote savedQuote = quoteService.addQuote(quote);
+        assert savedQuote.getId() != null;
+        return ResponseEntity.status(HttpStatus.CREATED).body(new IdDto(savedQuote.getId()));
+    }
+
+    record IdDto(Long id) {
     }
 }
 

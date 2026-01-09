@@ -7,16 +7,16 @@ services:
       - 'POSTGRES_USER=quotes'
     ports:
       - '5432'
-  http-server:
-    depends_on:
-      - postgresql
-    image: 'jb/http-server:latest'
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/quotes
-      - SPRING_DATASOURCE_USERNAME=quotes
-      - SPRING_DATASOURCE_PASSWORD=quotes
-      - SPRING_PROFILES_ACTIVE=aot
-      - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
-    ports:
-      - '8080:8080'
-      - '5005:5005'
+  # http-server:
+  #   depends_on:
+  #     - postgresql
+  #   image: 'jb/http-server:latest'
+  #   environment:
+  #     - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/quotes
+  #     - SPRING_DATASOURCE_USERNAME=quotes
+  #     - SPRING_DATASOURCE_PASSWORD=quotes
+  #     - SPRING_PROFILES_ACTIVE=aot
+  #     - JAVA_TOOL_OPTIONS=-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005
+  #   ports:
+  #     - '8080:8080'
+  #     - '5005:5005'

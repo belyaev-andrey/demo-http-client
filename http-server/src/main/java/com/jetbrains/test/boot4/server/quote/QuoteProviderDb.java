@@ -1,5 +1,8 @@
 package com.jetbrains.test.boot4.server.quote;
 
+import java.util.List;
+import java.util.Optional;
+
 class QuoteProviderDb implements QuoteProvider {
 
     private final QuoteRepository quoteRepository;
@@ -9,7 +12,13 @@ class QuoteProviderDb implements QuoteProvider {
     }
 
     @Override
-    public Quote findQuote() {
-        return quoteRepository.findRandom().orElseThrow(() -> new QuoteNotFoundException("No quotes found"));
+    public Optional<Quote> findQuote() {
+        return quoteRepository.findRandom();
     }
+
+    @Override
+    public List<Quote> findAllQuotes() {
+        return quoteRepository.findAll();
+    }
+
 }
