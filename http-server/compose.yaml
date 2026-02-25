@@ -6,7 +6,7 @@ services:
       - 'POSTGRES_PASSWORD=quotes'
       - 'POSTGRES_USER=quotes'
     ports:
-      - '5432'
+      - '50829:5432'
   # http-server:
   #   depends_on:
   #     - postgresql
