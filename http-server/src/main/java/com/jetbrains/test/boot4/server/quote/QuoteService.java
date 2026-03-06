@@ -43,7 +43,6 @@ class QuoteService {
             log.error("Exception during quote fetch from a DB", e);
             return Optional.empty();
         }
-
     }
 
     @Transactional

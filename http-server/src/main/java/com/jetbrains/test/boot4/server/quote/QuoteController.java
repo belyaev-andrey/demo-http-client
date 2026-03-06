@@ -45,7 +45,7 @@ class QuoteController {
     }
 
     @GetMapping(path = "/all", produces = "application/json")
-    @Operation(summary = "Get random quote", description = "Returns all quotes from the storage")
+    @Operation(summary = "Get all quotes", description = "Returns all quotes from the storage")
     @ApiResponse(responseCode = "200", description = "All quotes returned",
             content = @Content(mediaType = "application/json", schema = @Schema(implementation = QuoteDto.class)))
     @ApiResponse(responseCode = "404", description = "No quotes found", content = @Content(mediaType = "text/plain"))
