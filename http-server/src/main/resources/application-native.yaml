@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: Quotes Server (Native Image)
+  docker:
+    compose:
+      enabled: false
+springdoc:
+  api-docs:
+    enabled: false
+  swagger-ui:
+    enabled: false
