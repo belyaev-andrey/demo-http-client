@@ -117,7 +117,9 @@
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-maven-plugin</artifactId>
                         <configuration>
-    <!--                     Run `docker compose up -d postgresql` before the build and shutdown it after-->
+                            <!-- AOT compilation requires a running PostgreSQL instance.
+                                 Spring Boot Docker Compose integration is incompatible with AOT.
+                                 Run `docker compose up -d postgresql` before building the image. -->
                             <image>
                                 <name>jb/http-server:latest</name>
                                 <builder>bellsoft/buildpacks.builder:glibc</builder>

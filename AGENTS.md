@@ -60,7 +60,9 @@
 
 - AOT compilation enabled via Maven profile (`-Paot`)
 - Docker image built with Bellsoft buildpacks
-- Local AOT runs require `localdb` profile (Docker Compose integration incompatible with AOT)
+- **Important**: Spring Boot Docker Compose integration is incompatible with AOT
+  - Local AOT runs require `localdb` profile
+  - Building AOT Docker image requires manually starting PostgreSQL first
 - `AotConfiguration` class enables AOT processing without runtime database access
 
 ## Client Applications
@@ -114,12 +116,17 @@ mvn spring-boot:run
 ```shell
 cd http-server
 
+# Start PostgreSQL first (required for AOT build)
+docker compose up -d postgresql
+
 # Build the Docker image with AOT compilation
 mvn spring-boot:build-image -Paot
 
-# Start both PostgreSQL and http-server containers
+# Stop PostgreSQL and start both services
+docker compose down
 docker compose --profile client-dev up
 ```
+- **Important**: AOT compilation requires a running PostgreSQL instance because Spring Boot Docker Compose integration is incompatible with AOT
 - Builds AOT-compiled image tagged as `jb/http-server:latest`
 - Both PostgreSQL and http-server run in Docker containers
 - Server available on port 8080
@@ -161,12 +168,16 @@ docker compose up -d postgresql
 ```shell
 cd http-server
 # Build image first (if not already built)
+# Note: PostgreSQL must be running during AOT build
+docker compose up -d postgresql
 mvn spring-boot:build-image -Paot
+docker compose down
 
 # Start services with client-dev profile
 docker compose --profile client-dev up
 ```
 - Requires pre-built `jb/http-server:latest` image
+- AOT build requires running PostgreSQL (Docker Compose integration incompatible with AOT)
 - Server runs with `aot` Spring profile
 - Remote debugging available on port 5005
 
